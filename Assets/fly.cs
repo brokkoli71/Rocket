@@ -7,7 +7,7 @@ public class fly : MonoBehaviour
     private Rigidbody playerRb;
     
     public float forceBoost = 50f;
-    public float forceTurn = 2f;
+    public float forceTilt = 2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +21,26 @@ public class fly : MonoBehaviour
     }
     void FixedUpdate()
     {
-        
         if (Input.GetKey(KeyCode.Space))
         {
-            playerRb.AddForce(transform.up * forceBoost + Input.GetAxis("Vertical") * Input.GetAxis("Horizontal") * forceTurn);
+            playerRb.AddForce(transform.up * forceBoost);
+        }
+        //to be changed to tilt object
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            playerRb.AddForce(transform.up * forceTilt);
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            playerRb.AddForce(transform.up * forceTilt);
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            playerRb.AddForce(transform.up * forceTilt);
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            playerRb.AddForce(transform.up * forceTilt);
         }
     }
 }
