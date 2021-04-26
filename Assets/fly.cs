@@ -6,7 +6,7 @@ public class fly : MonoBehaviour
 {
     private Rigidbody playerRb;
     
-    public float speed = 10f;
+    public float forceBoost = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,12 +17,15 @@ public class fly : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
+
 
     void FixedUpdate()
     {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            playerRb.AddForce(transform.up * forceBoost);
+        }
         float forwardInput = Input.GetAxis("Vertical");
-        playerRb.AddForce(playerRb.rotation.ToEulerAngles() * forwardInput * speed);
     }
 }
